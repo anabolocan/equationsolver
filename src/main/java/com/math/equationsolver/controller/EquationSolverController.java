@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/equationsolver")
 public class EquationSolverController {
@@ -28,7 +29,7 @@ public class EquationSolverController {
         List<EquationResult> equationResultList = new ArrayList<>(equationSolverService.getAllEquationResults());
         return new ResponseEntity<>(equationResultList, HttpStatus.OK);
     }
-    @GetMapping("/calculateEquation")
+    @PostMapping("/calculateEquation")
     public ResponseEntity<ResponseMessage> calculateEquation(@RequestBody String equation) {
         ResponseMessage responseMessage = new ResponseMessage();
         EquationResult equationResult;
